@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Quiz • {{ topic }}{% endblock %}
+{% block content %}
+<section class="card card-lg">
+  <div class="title-stack">
+    <h1>{{ quiz.quiz_title or (topic ~ " (" ~ difficulty ~ ")") }}</h1>
+    <p class="muted">{{ topic }} • {{ difficulty }}</p>
+  </div>
+
+  <form action="{{ url_for('submit') }}" method="post" class="quiz-form">
+    {% for q in quiz.questions %}
+      <div class="qblock">
+        <div class="qheader">
+          <span class="qid">Q{{ q.id }}</span>
+          <span class="qsub">{{ q.subtopic }}</span>
+        </div>
+        <div class="qtext">{{ q.question|safe }}</div>
+
+        <div class="opts">
+          {% for key, val in q.options.items() %}
+            <label class="opt">
+              <input type="radio" name="q{{ q.id }}" value="{{ key }}">
+              <span class="optkey">{{ key }}</span>
+              <span class="optlabel">{{ val|safe }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
+    <div class="actions">
+      <button type="submit">Submit Answers</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

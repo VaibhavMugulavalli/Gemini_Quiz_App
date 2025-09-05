@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Results • {{ topic }}{% endblock %}
+{% block content %}
+<section class="card card-lg">
+  <div class="title-stack">
+    <h1>Score: {{ score }}/{{ total }}</h1>
+    <p class="muted">{{ topic }} • {{ difficulty }}</p>
+  </div>
+
+  <h2>Review & Explanations</h2>
+  <div class="results-list">
+    {% for r in per_q %}
+      <div class="result-item {% if r.is_correct %}okbg{% else %}nobg{% endif %}">
+        <div class="result-top">
+          <span class="qid">Q{{ r.id }}</span>
+          {% if r.is_correct %}
+            <span class="badge ok">Correct</span>
+          {% else %}
+            <span class="badge no">Incorrect</span>
+          {% endif %}
+          <span class="sub">{{ r.subtopic }}</span>
+        </div>
+
+        <div class="qtext">{{ r.question|safe }}</div>
+
+        <ul class="optlist">
+          {% for k, v in r.options.items() %}
+            <li class="{% if k == r.correct %}corr{% elif k == r.user %}your{% endif %}">
+              <span class="optkey">{{ k }}</span> <span class="optlabel">{{ v|safe }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <p class="explain"><strong>Why:</strong> {{ r.explanation }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h2>Strengths</h2>
+  {% if strengths and strengths|length > 0 %}
+    <ul class="chips">
+      {% for s in strengths %}
+        <li><strong>{{ s.subtopic }}</strong>: {{ s.note }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="muted">No strong areas yet—keep practicing!</p>
+  {% endif %}
+
+  <h2>Focus Areas & Pointers</h2>
+  {% if focus and focus|length > 0 %}
+    <div class="focus-list">
+      {% for f in focus %}
+        <div class="focus-item">
+          <h3>{{ f.subtopic }}</h3>
+          <ul>
+            {% for p in f.pointers %}<li>{{ p }}</li>{% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">Great coverage! Consider attempting harder questions.</p>
+  {% endif %}
+</section>
+{% endblock %}
