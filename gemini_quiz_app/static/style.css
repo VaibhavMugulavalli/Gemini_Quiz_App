@@ -1,0 +1,111 @@
+/* ---- Theme ---- */
+:root{
+    --bg:#0f1117;
+    --card:#141923;
+    --card-2:#101520;
+    --text:#e6e7ea;
+    --muted:#9aa3ad;
+    --accent:#7aa2f7;
+    --ok:#4ade80;
+    --no:#f87171;
+    --border:#252b36;
+    --shadow:0 12px 40px rgba(0,0,0,.25);
+  }
+  
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
+  
+  /* ---- Layout ---- */
+  .container{max-width:980px;margin:0 auto;padding:0 20px}
+  .header,.footer{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{color:var(--text);text-decoration:none;font-weight:700;letter-spacing:.3px}
+  
+  .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;margin:20px 0;box-shadow:var(--shadow)}
+  .card-lg{padding:28px}
+  .title-stack{margin-bottom:10px}
+  h1,h2,h3{margin:6px 0 10px}
+  h1{font-size:1.7rem}
+  h2{font-size:1.2rem;color:var(--accent)}
+  .muted{color:var(--muted)}
+  
+  /* ---- Form ---- */
+  .form-grid{display:grid;gap:14px}
+  .row{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+  label{display:grid;gap:8px;font-size:.95rem;color:var(--muted)}
+  input[type=text],input[type=number],select{
+    padding:12px 12px;border-radius:12px;border:1px solid var(--border);
+    background:#0d1118;color:var(--text);outline:none
+  }
+  input:focus,select:focus{border-color:#2f3a4e}
+  .actions{margin-top:10px;display:flex;justify-content:flex-end}
+  button{
+    padding:12px 16px;border-radius:12px;border:1px solid transparent;
+    background:var(--accent);color:#0c0f15;font-weight:700;cursor:pointer
+  }
+  button:hover{filter:brightness(1.05)}
+  
+  /* ---- Flash ---- */
+  .flash>div{background:#1a2330;border:1px solid var(--border);padding:10px;border-radius:12px;margin:10px 0}
+  
+  /* ---- Quiz ---- */
+  .quiz-form{display:grid;gap:18px}
+  .qblock{
+    background:var(--card-2);border:1px solid var(--border);border-radius:14px;
+    padding:18px
+  }
+  .qblock + .qblock{margin-top:8px}
+  .qheader{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+  .qid{font-weight:800;color:var(--accent);letter-spacing:.2px}
+  .qsub{color:var(--muted);font-size:.9rem;margin-left:auto}
+  .qtext{margin:6px 0 12px}
+  .opts{display:grid;gap:10px}
+  .opt{
+    display:grid;grid-template-columns:auto 24px 1fr;gap:10px;align-items:center;
+    background:#0e141d;padding:10px;border-radius:12px;border:1px solid var(--border)
+  }
+  .opt input{transform:scale(1.1)}
+  .optkey{font-weight:800;color:var(--muted)}
+  .optlabel{}
+  
+  /* ---- Results ---- */
+  .results-list{display:grid;gap:16px;margin-top:8px}
+  .result-item{border:1px solid var(--border);border-radius:14px;padding:16px;background:#0f141d}
+  .result-item.okbg{background:linear-gradient(0deg, rgba(74,222,128,.06), rgba(74,222,128,.06)), #0f141d}
+  .result-item.nobg{background:linear-gradient(0deg, rgba(248,113,113,.06), rgba(248,113,113,.06)), #0f141d}
+  .result-top{display:flex;gap:10px;align-items:center;margin-bottom:6px}
+  .badge{font-size:.8rem;padding:2px 10px;border-radius:999px;border:1px solid var(--border)}
+  .badge.ok{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.25);color:var(--ok)}
+  .badge.no{background:rgba(248,113,113,.12);border-color:rgba(248,113,113,.25);color:var(--no)}
+  .result-top .sub{color:var(--muted);margin-left:auto}
+  
+  .optlist{list-style:none;padding:0;margin:10px 0 8px}
+  .optlist li{
+    padding:8px 10px;border-radius:10px;border:1px solid var(--border);
+    background:#0e141d;margin:8px 0;display:grid;grid-template-columns:24px 1fr;gap:10px
+  }
+  .optlist li.corr{border-color:rgba(74,222,128,.35);background:rgba(74,222,128,.06)}
+  .optlist li.your{border-color:rgba(122,162,247,.35);background:rgba(122,162,247,.06)}
+  
+  .explain{color:var(--muted);margin-top:6px}
+  
+  /* ---- Chips/Focus ---- */
+  .chips{display:grid;gap:8px;list-style:none;padding:0}
+  .chips li{background:#0f141d;border:1px solid var(--border);padding:10px 12px;border-radius:999px}
+  
+  .focus-list{display:grid;gap:12px}
+  .focus-item{background:#0f141d;border:1px solid var(--border);border-radius:12px;padding:12px}
+  
+  .mindframe{
+    width:100%;
+    height:520px;              /* adjust as you like */
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#0f1117;
+  }
+  @media (min-width: 900px){
+    .mindframe { height: 600px; }
+  }
+  
+  /* ---- Footer ---- */
+  .footer{color:var(--muted)}
+  
