@@ -262,6 +262,6 @@ def handle_any_error(e):
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
     # Bind to all interfaces so you can hit it via the EC2 public IP.
-    #host = 
-    port = int(os.getenv("PORT", "5000"))  # open this port in the EC2 security group
-    app.run( port=8000, debug=True, use_reloader=False)
+    host = "0.0.0.0"
+    app.run(host=host, port=5000, debug=True, use_reloader=False)
+
